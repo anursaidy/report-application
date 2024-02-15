@@ -1,0 +1,124 @@
+<form
+  id="add-form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form.value)"
+  ngNativeValidate
+>
+  <fieldset class="d-grid gap-2 col-12">
+    <legend>Add Report</legend>
+    <input
+      type="text"
+      name="troublemakerName"
+      placeholder="Troublemaker's Name"
+      formControlName="troublemakerName"
+      required
+    />
+
+    <div formGroupName="locationForm">
+      
+      <input
+        type="radio"
+        id="location-exist"
+        value="location-exist"
+        name = "locationChoice"
+        formControlName="locationChoice"
+        required
+     />
+      <label for="location-exist">Existing Location </label>
+     
+      <input
+        type="radio"
+        id="location-new"
+        value="location-new"
+        name = "locationChoice"
+        formControlName="locationChoice"
+        required
+      />
+      <label for="location-new">New Location </label>
+      <div
+        *ngIf="
+          form.get('locationForm.locationChoice')?.value ===
+          'location-exist'
+        "
+      >
+        <label for="selectedExistingLocation">Select Existing Location:</label>
+        <select id="selectedExistingLocation" name = "selectedExistingLocation" formControlName="selectedExistingLocation" required>
+          <option></option>
+          <option *ngFor="let location of existingLocations" >
+            {{ location.placeName }}
+          </option>
+        </select>
+      </div>
+
+      <div
+        id="location-container"
+        *ngIf="
+          form.get('locationForm.locationChoice')?.value ===
+          'location-new'
+        "
+      >
+        <label for="newLocation">Place Name: </label>
+        <input type= "text" id="newLocation" name = "newLocation" formControlName="newLocation" required/>
+        <p>Click Map To Set Latitude & Longitude:</p>
+        <div id="mapId">
+           <label for="latitude">Lat: </label>
+          <input type= "text" id="latitude" name = "latitude" value = 0 formControlName="latitude" readonly/>
+          <label for="longitude">Long: </label>
+          <input type= "text" id="longitude" name = "longitude" value = 0 formControlName="longitude" readonly/>
+          <app-map (mapClick)="onMapClick($event)"></app-map>
+        </div>
+      </div>
+    </div>
+
+    <input
+      type="text"
+      name="reporterName"
+      placeholder="Reporter's Name"
+      formControlName="reporterName"
+      required
+    />
+    <input
+      type="tel"
+      id="reporterPhone"
+      name="reporterPhone"
+      placeholder="Phone: (XXX-XXX-XXXX)"
+      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+      formControlName="reporterPhone"
+      required
+    />
+    <input
+      type="text"
+      name="extraInfo"
+      placeholder="Extra Information"
+      formControlName="extraInfo"
+      required
+    />
+
+    <div>
+      <label for="checkImg">
+        <input type="checkbox" id="checkImg" formControlName="checkImg" />
+        Attach Troublemaker Image (Optional):
+      </label>
+    </div>
+
+    <div *ngIf="form.get('checkImg')?.value">
+      <label for="pictureLink">Enter Picture Link: </label>
+      <input
+        type="text"
+        id="pictureLink"
+        name="pictureLink"
+        formControlName="pictureLink"
+      />
+    </div>
+
+    <!-- Buttons inside a form become of type= "submit" -->
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      routerLink="/reportTable"
+    >
+      Cancel
+    </button>
+  </fieldset>
+</form>

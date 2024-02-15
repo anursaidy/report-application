@@ -1,0 +1,50 @@
+#add-form{
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+legend{
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin-bottom: 0px;
+}
+#location-container{
+    border: 2px solid black;
+    border-radius: 10px;;
+    padding: 5px;
+  
+}
+
+#location-container p {
+    font-size: small;
+    
+}
+
+#location-exist, #location-new{
+    /* display: flex; */
+    margin: 10px;
+}
+
+#selectedExistingLocation{
+    margin:5px;
+}
+
+#mapId{
+    display:block;
+    
+    width: 100%;
+    margin:0 auto; 
+    
+}
+
+#latitude, #longitude{
+    width:60px;
+    margin:2px;
+    height:20px;
+}
+
+

@@ -1,0 +1,20 @@
+#add-button {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+thead tr th{
+  border: 2px solid black
+}
+
+tbody tr td app-report{
+  float:right;
+}
+td {
+  width:2%; 
+  border: 2px solid black
+}
+#data-table {
+  border: 2px solid;
+}

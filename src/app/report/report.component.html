@@ -1,0 +1,18 @@
+
+    <span id="button" class="col-12">
+      <button
+        id="more-info"
+        class="btn btn-secondary"
+        (click)="onMoreInfo($event, report.uniqueID)"
+      >
+        More Info
+      </button>
+
+      <button
+        id="delete"
+        class="btn btn-outline-danger"
+        (click)="onDelete($event, report.uniqueID)"
+      >
+        Delete
+      </button>
+    </span>

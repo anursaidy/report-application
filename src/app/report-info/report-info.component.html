@@ -1,0 +1,28 @@
+<div>
+  <img
+    *ngIf="pictureLink; else defaultImage"
+    [src]="pictureLink"
+    style="width: 100%; height: 200px"
+    alt="Troublemaker Image"
+  />
+  <ng-template #defaultImage>
+    <img
+      src="assets/img-default.png"
+      style="width: 100%; height: 205px"
+      alt="Default Image"
+    />
+  </ng-template>
+  <p>
+    Baddie's Name: {{ troublemakerName }} <br />
+    Location: {{ locationName }} <br />
+    Reported By: {{ reporterName }} ({{ reporterPhone }}) <br />
+    Time: {{ time | date : "yyy-MM-dd (hh:mma)" }} <br />
+    Status: {{status ? "OPEN" : "RESOLVED" }} <br />
+    Extra Info: {{ extraInfo }}
+    <button type="button" class="btn btn-primary" (click)="onModifyClick()">Modify Status</button>
+  </p>
+</div>
+
+<button type="button" class="btn btn-outline-danger" routerLink="/reportTable">
+  Return
+</button>
